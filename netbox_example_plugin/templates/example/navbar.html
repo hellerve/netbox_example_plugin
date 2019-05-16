@@ -1,0 +1,16 @@
+{% load helpers %}
+<li class="dropdown{% if request.path|contains:'/example/' %} active{% endif %}">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Example <span class="caret"></span></a>
+    <ul class="dropdown-menu">
+        <li class="dropdown-header">Example</li>
+        <li>
+            {% if perms.example.add_example %}
+                <div class="buttons pull-right">
+                    <a href="{% url 'example:example_add' %}" class="btn btn-xs btn-success" title="Add"><i class="fa fa-plus"></i></a>
+                    <a href="{% url 'example:example_import' %}" class="btn btn-xs btn-info" title="Import"><i class="fa fa-download"></i></a>
+                </div>
+            {% endif %}
+            <a href="{% url 'example:example_list' %}">Example Things</a>
+        </li>
+    </ul>
+</li>
